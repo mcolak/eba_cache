@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="ehcache.xsd"
+              updateCheck="true" monitoring="autodetect">
+
+    <!--cacheManagerPeerProviderFactory
+   class="net.sf.ehcache.distribution.RMICacheManagerPeerProviderFactory"
+   properties="peerDiscovery=automatic, multicastGroupAddress=230.0.0.1,
+   multicastGroupPort=4446, timeToLive=32"/-->
+
+    <defaultCache
+             maxElementsInMemory="20000"
+             eternal="false"
+             timeToIdleSeconds="3000"
+             timeToLiveSeconds="10000"
+             overflowToDisk="true"
+             diskPersistent="false"
+             diskExpiryThreadIntervalSeconds="120"
+             memoryStoreEvictionPolicy="LRU"
+             >
+        <!--cacheEventListenerFactory
+            class="net.sf.ehcache.distribution.RMICacheReplicatorFactory"/-->
+    </defaultCache>
+    <!--cacheManagerPeerListenerFactory
+		class="net.sf.ehcache.distribution.RMICacheManagerPeerListenerFactory"
+	/-->
+
+    <cache name="EbaCache"
+           maxElementsInMemory="30000"
+           eternal="false"
+           timeToIdleSeconds="600"
+           timeToLiveSeconds="4500"
+           overflowToDisk="false"            
+          >
+        <!--cacheEventListenerFactory
+            class="net.sf.ehcache.distribution.RMICacheReplicatorFactory"/-->
+        
+    </cache>
+
+    <cache name="GeneralCache"
+           maxElementsInMemory="600000"
+           eternal="false"
+           timeToIdleSeconds="1200"
+           timeToLiveSeconds="3600"
+           overflowToDisk="false"
+          >
+        <!--cacheEventListenerFactory
+            class="net.sf.ehcache.distribution.RMICacheReplicatorFactory"/-->
+
+    </cache>
+
+</ehcache>
